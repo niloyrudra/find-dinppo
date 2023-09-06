@@ -7,6 +7,7 @@
  * @package Find_Dinppo
  */
 
+global $wp_query;
 get_header();
 ?>
 	<main id="primary" class="site-main">
@@ -49,15 +50,16 @@ get_header();
 					<script defer>
 						"use strict";
 						jQuery(function($){ // use jQuery code inside this to avoid "$ is not defined" error
+							let currentPage = 1;
+							const maxPages = <?php echo $wp_query->max_num_pages; ?>;
 							$('.ppo-load-more').click(function(){
-
 								const button = $(this),
 									data = {
 										'action': 'ppo_faq_post_load_more_action',
 // 										'query': ppo_data.posts, // that's how we get params from wp_localize_script() function
-										'paged' : ppo_data.current_page
+										'paged' : ppo_data.current_page ?? currentPage
 									};
-								
+								console.log("Before Ajax Call ", ppo_data.current_page)
 								$.ajax({ // you can also use $.post here
 									url : ppo_data.ajax_url, // AJAX handler
 									data : data,
@@ -73,9 +75,13 @@ get_header();
 
 											$("#accordionExample").append(data)
 											
-											ppo_data.current_page++;
-
-											if ( ppo_data.current_page == ppo_data.max_page ) 
+											if( ppo_data.current_page ) ppo_data.current_page = parseInt(ppo_data.current_page) + 1;
+											else currentPage++;
+											
+											console.log("Success >> ", ppo_data.current_page, ppo_data.max_page, maxPages)
+											
+// 											if ( ppo_data.current_page == ppo_data.max_page )
+											if ( currentPage == maxPages )
 												button.remove(); // if last page, remove the button
 
 											// you can also fire the "post-load" event here if you use a plugin that requires it

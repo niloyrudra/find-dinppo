@@ -13,6 +13,10 @@
  * @package Find_Dinppo
  */
 
+// $q = get_query_var('s') ? get_query_var('s') : '';
+
+// print_r($q);
+
 get_header();
 
 $is_admin = ppo_is_admin();

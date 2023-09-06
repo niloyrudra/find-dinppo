@@ -52,11 +52,13 @@ if (have_posts()) { ?>
 		})
 		// Ajax Handler
 		function ppoUpdateFaqMetaStats(faqId, action) {
+			console.log(ppo_data.current_page)
 			jQuery.ajax({
 				url: ppo_data.ajax_url,
 				type: "post",
 				data: {
 					faqId: faqId,
+// 					paged: ppo_data.current_page,
 					action: action
 				},
 				beforeSend: function() {

@@ -81,7 +81,7 @@ $last_half_month_list = ['jul','aug','sep','okt','nov','dec'];
 				<button class="bg-transparent py-0 ps-0  m-0 border-0" style="text-decoration:none;padding: 0 4px 0 0;" data-bs-toggle="modal" data-bs-target="#ppoModal">
 					<img src="<?php echo ppo_get_dir('/assets/images/profile/premium.png'); ?>" style="width:30px;height:30px;" />
 				</button>
-<!-- 				<button class="bg-transparent py-0 pe-0  m-0 border-0" style="padding: 0 0 0 4px;"<?php echo ( $is_visitor ? ' data-bs-toggle="modal" data-bs-target="#ppoNonLoggedInUserInfoModal"' : '' ); ?>>
+<!-- 				<button class="bg-transparent py-0 pe-0  m-0 border-0" style="padding: 0 0 0 4px;" data-bs-toggle="modal" data-bs-target="#ppoNonLoggedInUserInfoModal">
 					<img src="<?php echo ppo_get_dir('/assets/images/profile/heart-outline.png'); ?>" style="width:30px;height:30px;" />
 				</button> -->
 				<?php ppo_heart_icon( $user ); ?>
@@ -91,7 +91,7 @@ $last_half_month_list = ['jul','aug','sep','okt','nov','dec'];
 	</header><!-- .entry-header -->
 
 	<div class="profile-content mb-3">
-		<div class="row px-1 py-3 ppo-box-shadow" style="background-color:rgb(156,170,155);border-radius:16px;">
+		<div class="row px-1 py-3 ppo-box-shadow ppo-br-16" style="background-color:rgb(156,170,155);">
 
 			<div class="col-4">
 				<div class="mb-3">
@@ -132,8 +132,8 @@ $last_half_month_list = ['jul','aug','sep','okt','nov','dec'];
 						<img src="<?php echo ppo_get_dir('/assets/images/profile/mail-outline.png') ?>" style="margin-top: -10px;width:20px;margin-right:4px;" />
 						<span class="fs-5">Skriv besked</span>
 					</a>
-					<a href="tel:<?php echo esc_html($tele_number); ?>" class="btn px-3 py-1 fw-bold text-light ppo-profile-accent-button"<?php echo ( $is_visitor ? ' data-bs-toggle="modal" data-bs-target="#ppoNonLoggedInUserInfoModal"' : '' ); ?>>
-						<img src="<?php echo ppo_get_dir('/assets/images/profile/phone-call-outline.png') ?>" style="margin-top: -12px;width:20px;margin-right:4px;" />
+					<a href="tel:<?php echo esc_html($tele_number); ?>" class="px-3 py-1 fw-bold text-light ppo-profile-accent-button d-flex justify-content-center align-items-center"<?php echo ( $is_visitor ? ' data-bs-toggle="modal" data-bs-target="#ppoNonLoggedInUserInfoModal"' : '' ); ?>>
+						<img src="<?php echo ppo_get_dir('/assets/images/profile/phone-call-outline.png') ?>" style="width:20px;margin-right:6px;" />
 						<span class="fs-5">Ring</span>
 					</a>
 				</div>

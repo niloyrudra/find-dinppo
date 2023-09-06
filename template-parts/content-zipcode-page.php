@@ -7,6 +7,9 @@
  *
  * @package Find_Dinppo
  */
+// global $wp_query;
+// $max_pages = $wp_query->max_num_pages;
+// echo $max_pages;
 ?>
 <style type="text/css">
 @keyframes ldio-ebuuj6igisj {
@@ -379,9 +382,9 @@
 			const button = $(this),
 				data = {
 					action: 'ppo_zipcode_search_result_load_more_action',
-// 										'query': ppo_data.posts, // that's how we get params from wp_localize_script() function
+					// 	'query': ppo_data.posts, // that's how we get params from wp_localize_script() function
 					paged : currentPage,
-					query: $('#ppoZipSearch').val()
+					query: $('#ppoZipSearch').val() ?? ''
 				};
 
 			$.ajax({ // you can also use $.post here
@@ -400,6 +403,8 @@
 						$("#ppoDaycareSearchResultContainer").append(data)
 
 						currentPage++;
+						
+						console.log(currentPage)
 
 						if ( currentPage == 3 /*ppo_data.max_page*/ ) 
 							button.remove(); // if last page, remove the button

@@ -12,7 +12,7 @@ function ppo_zipcode_filter_action_callback() {
 		
 		$daycares = ppo_get_daycares(array(
 			'number'  => 4,
-			'paged'	=> $_POST['paged'] + 1,
+// 			'paged'	=> $_POST['paged'] + 1,
 			'meta_query' => array(
 				'relation' => 'OR', // Optional, defaults to "AND"
 				array(
@@ -32,9 +32,6 @@ function ppo_zipcode_filter_action_callback() {
 // 					'compare'	=> 'LIKE'
 // 				),
 			)
-// 			'meta_key' => '_daycare_postcode',
-// 			'meta_compare'  =>  '==', // '=='/"LIKE"
-// 			'meta_value' => isset( $_POST['query'] ) ? sanitize_text_field($_POST['query']) : '',
 		));
 
 		// it is always better to use WP_Query but not here
@@ -81,7 +78,7 @@ function ppo_zipcode_search_action_callback() {
 // ZipCode - Daycare search result loading more func
 // -------------------------------------------------
 add_action('wp_ajax_ppo_zipcode_search_result_load_more_action', 'ppo_zipcode_search_result_load_more_action_callback');
-add_action('wp_ajax_nopriv_ppo_zipcode_search_result_load_more_action_action', 'ppo_zipcode_search_result_load_more_action_callback');
+add_action('wp_ajax_nopriv_ppo_zipcode_search_result_load_more_action', 'ppo_zipcode_search_result_load_more_action_callback');
 // Callback
 function ppo_zipcode_search_result_load_more_action_callback() {
 	
@@ -92,10 +89,18 @@ function ppo_zipcode_search_result_load_more_action_callback() {
 		$daycares = ppo_get_daycares(array(
 			'number'  => 4,
 			'paged'	=> $_POST['paged'] + 1,
-			
-			'meta_key' => '_daycare_postcode',
-			'meta_compare'  =>  '==', // '=='/"LIKE"
-			'meta_value' => isset( $_POST['query'] ) ? sanitize_text_field($_POST['query']) : '',
+// 			'meta_query' => array(
+// 				'relation' => 'OR', // Optional, defaults to "AND"
+// 				array(
+// 					'key'		=> '_daycare_postcode',
+// 					'value'		=> isset( $_POST['query'] ) ? sanitize_text_field($_POST['query']) : '',
+// 					'compare'	=> 'LIKE',
+// // 					'type'		=> 'String'
+// 				),
+// 			),
+// 			'meta_key' => '_daycare_postcode',
+// 			'meta_compare'  =>  '==', // '=='/"LIKE"
+// 			'meta_value' => isset( $_POST['query'] ) ? sanitize_text_field($_POST['query']) : '',
 		));
 
 		// it is always better to use WP_Query but not here
@@ -112,7 +117,7 @@ function ppo_zipcode_search_result_load_more_action_callback() {
 // FAQ - Meta Stats
 // ----------------
 add_action('wp_ajax_ppo_faq_post_load_more_action', 'ppo_faq_post_load_more_action_callback');
-add_action('wp_ajax_nopriv_ppo_faq_post_load_more_action_action', 'ppo_faq_post_load_more_action_callback');
+add_action('wp_ajax_nopriv_ppo_faq_post_load_more_action', 'ppo_faq_post_load_more_action_callback');
 // Callback
 function ppo_faq_post_load_more_action_callback() {
 	
